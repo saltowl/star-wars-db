@@ -1,0 +1,14 @@
+.error-block {
+  width: 100%;
+}
+
+.error-block__info {
+  flex-direction: column;
+  justify-content: center;
+}
+
+.error-block__icon {
+  max-width: 100px;
+  display: block;
+  height: auto;
+}

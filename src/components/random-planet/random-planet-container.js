@@ -7,6 +7,8 @@ export default class RandomPlanetContainer extends React.Component {
 
   state = {
     planet: {},
+    loading: true,
+    error: false,
   };
 
   componentDidMount() {
@@ -14,17 +16,16 @@ export default class RandomPlanetContainer extends React.Component {
   }
 
   onPlanetLoaded = (planet) => {
-    this.setState({ planet });
+    this.setState({ planet, loading: false });
+  };
+
+  onError = (error) => {
+    this.setState({ error: true, loading: false });
   };
 
   updatePlanet = () => {
     const id = Math.floor(Math.random() * 25) + 1;
-    this.swapiService
-      .getPlanet(id)
-      .then(this.onPlanetLoaded)
-      .catch((err) => {
-        console.error(err);
-      });
+    this.swapiService.getPlanet(id).then(this.onPlanetLoaded).catch(this.onError);
   };
 
   render() {

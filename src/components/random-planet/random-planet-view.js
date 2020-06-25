@@ -1,33 +1,14 @@
 import React from 'react';
 import './random-planet.css';
 
-export default function RandomPlanet({
-  planet: { id, name, population, rotationPeriod, diameter },
-}) {
+import Spinner from '../spinner';
+import Planet from './planet-view';
+import ErrorBlock from '../error-block';
+
+export default function RandomPlanet({ planet, loading, error }) {
   return (
     <article className="random-planet jumbotron rounded d-flex">
-      <img
-        className="planet-image"
-        src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
-        alt={`${name}`}
-      />
-      <div>
-        <h4>{name}</h4>
-        <ul className="list-group list-group-flush">
-          <li className="list-group-item">
-            <span className="term">Population</span>
-            <span>{population}</span>
-          </li>
-          <li className="list-group-item">
-            <span className="term">Rotation Period</span>
-            <span>{rotationPeriod}</span>
-          </li>
-          <li className="list-group-item">
-            <span className="term">Diameter</span>
-            <span>{diameter}</span>
-          </li>
-        </ul>
-      </div>
+      {loading ? <Spinner /> : error ? <ErrorBlock /> : <Planet {...planet} />}
     </article>
   );
 }
