@@ -12,7 +12,11 @@ export default class RandomPlanetContainer extends React.Component {
   };
 
   componentDidMount() {
-    this.updatePlanet();
+    this.timer = setInterval(this.updatePlanet(), 10000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer);
   }
 
   onPlanetLoaded = (planet) => {
