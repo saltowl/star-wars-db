@@ -2,6 +2,7 @@ import toCamelCase from '../utils/to-camel-case';
 
 export default class SwapiService {
   _baseUrl = 'https://swapi.dev/api';
+  _imageUrl = 'https://starwars-visualguide.com/assets/img';
 
   getResource = async (url) => {
     const res = await fetch(`${this._baseUrl}${url}`);
@@ -20,6 +21,12 @@ export default class SwapiService {
     const person = await this.getResource(`/people/${id}/`);
     return this._transformPerson(person);
   };
+
+  getPersonImage = ({ id }) => `${this._imageUrl}/characters/${id}.jpg`;
+
+  getPlanetImage = ({ id }) => `${this._imageUrl}/planets/${id}.jpg`;
+
+  getStarshipImage = ({ id }) => `${this._imageUrl}/starships/${id}.jpg`;
 
   getAllPlanets = async () => {
     const res = await this.getResource('/planets/');
