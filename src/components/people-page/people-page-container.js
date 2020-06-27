@@ -11,12 +11,6 @@ export default class PeoplePageContainer extends React.Component {
   };
 
   render() {
-    return (
-      <PeoplePage
-        {...this.state}
-        onPersonSelected={this.onPersonSelected}
-        renderItem={({ name }) => name}
-      />
-    );
+    return <PeoplePage {...this.state} onPersonSelected={this.onPersonSelected} />;
   }
 }
