@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default (Wrapped, fn) => {
+export default (fn) => (Wrapped) => {
   return (props) => {
     return <Wrapped {...props}>{fn}</Wrapped>;
   };
