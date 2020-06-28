@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function Item({ item, image, children }) {
+function Item({ item, image, children }) {
   const { name } = item;
 
   return (
@@ -15,3 +16,13 @@ export default function Item({ item, image, children }) {
     </React.Fragment>
   );
 }
+
+Item.propTypes = {
+  item: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+  }).isRequired,
+  image: PropTypes.string.isRequired,
+  children: PropTypes.arrayOf(PropTypes.node).isRequired,
+};
+
+export default Item;

@@ -1,10 +1,15 @@
 import React from 'react';
 import { PlanetDetails } from '../main-components';
+import PropTypes from 'prop-types';
 import './random-planet.css';
 
 export default class RandomPlanetContainer extends React.Component {
   static defaultProps = {
     updateInterval: 10000,
+  };
+
+  static propTypes = {
+    updateInterval: PropTypes.number,
   };
 
   state = {

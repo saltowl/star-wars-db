@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function Record({ item, label, field }) {
+function Record({ item, label, field }) {
   return (
     <li className="list-group-item">
       <span className="term">{label}</span>
@@ -8,3 +9,11 @@ export default function Record({ item, label, field }) {
     </li>
   );
 }
+
+Record.propTypes = {
+  item: PropTypes.object,
+  label: PropTypes.string.isRequired,
+  field: PropTypes.string.isRequired,
+};
+
+export default Record;

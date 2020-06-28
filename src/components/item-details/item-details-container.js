@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ItemDetails from './item-details-view';
 
 export default class ItemDetailsContainer extends React.Component {
@@ -7,6 +8,12 @@ export default class ItemDetailsContainer extends React.Component {
     image: null,
     loading: false,
     error: false,
+  };
+
+  static propTypes = {
+    itemId: PropTypes.number,
+    getData: PropTypes.func.isRequired,
+    getImageUrl: PropTypes.func.isRequired,
   };
 
   updateItem() {

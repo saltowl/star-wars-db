@@ -1,7 +1,8 @@
 import React from 'react';
 import './item-list.css';
+import PropTypes from 'prop-types';
 
-export default function ItemList({ data, onItemSelected, children }) {
+function ItemList({ data, onItemSelected, children }) {
   const itemList = data.map((item) => {
     const { id } = item;
     return (
@@ -12,3 +13,15 @@ export default function ItemList({ data, onItemSelected, children }) {
   });
   return <ul className="item-list list-group">{itemList}</ul>;
 }
+
+ItemList.defaultProps = {
+  onItemSelected: () => {},
+};
+
+ItemList.propTypes = {
+  onItemSelected: PropTypes.func,
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  children: PropTypes.func.isRequired,
+};
+
+export default ItemList;

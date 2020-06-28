@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './error-block.css';
 import icon from './jedi-order-brands.svg';
 
-export default function ErrorBlock({ message = 'Something wents wrong' }) {
+function ErrorBlock({ message }) {
   return (
     <div className="error-block d-flex row">
       <img className="error-block__icon col-4" src={icon} alt="error icon" />
@@ -13,3 +14,13 @@ export default function ErrorBlock({ message = 'Something wents wrong' }) {
     </div>
   );
 }
+
+ErrorBlock.defaultProps = {
+  message: 'Something wents wrong',
+};
+
+ErrorBlock.propTypes = {
+  message: PropTypes.string,
+};
+
+export default ErrorBlock;

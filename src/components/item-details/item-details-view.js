@@ -1,11 +1,12 @@
 import React from 'react';
 import './item-details.css';
+import PropTypes from 'prop-types';
 
 import Spinner from '../spinner';
 import Item from './item-view';
 import ErrorBlock from '../error-block';
 
-export default function ItemDetails({ item, image, loading, error, children }) {
+function ItemDetails({ item, image, loading, error, children }) {
   const showItem = item && !loading && !error;
   const showInitialMessage = item === null && !loading && !error;
 
@@ -22,3 +23,13 @@ export default function ItemDetails({ item, image, loading, error, children }) {
     </div>
   );
 }
+
+ItemDetails.propTypes = {
+  item: PropTypes.object,
+  image: PropTypes.string,
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.bool.isRequired,
+  children: PropTypes.arrayOf(PropTypes.node),
+};
+
+export default ItemDetails;
