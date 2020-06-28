@@ -11,7 +11,7 @@ export default class ItemDetailsContainer extends React.Component {
   };
 
   static propTypes = {
-    itemId: PropTypes.number,
+    itemId: PropTypes.string,
     getData: PropTypes.func.isRequired,
     getImageUrl: PropTypes.func.isRequired,
   };

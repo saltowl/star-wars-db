@@ -8,7 +8,7 @@ import ErrorBoundary from '../error-boundary';
 
 import AppHeader from '../app-header';
 import RandomPlanet from '../random-planet';
-import PeoplePage from '../people-page';
+import { PeoplePage, PlanetPage, StarshipPage } from '../pages';
 
 export default class App extends React.Component {
   swapiService = new SwapiService();
@@ -22,6 +22,8 @@ export default class App extends React.Component {
             <RandomPlanet />
 
             <PeoplePage />
+            <PlanetPage />
+            <StarshipPage />
           </div>
         </SwapiServiceProvider>
       </ErrorBoundary>
