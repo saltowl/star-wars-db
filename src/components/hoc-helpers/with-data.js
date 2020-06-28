@@ -2,7 +2,7 @@ import React from 'react';
 import Spinner from '../spinner';
 import ErrorBlock from '../error-block';
 
-export default (View, getData) => {
+export default (View) => {
   return class extends React.Component {
     state = {
       data: null,
@@ -11,7 +11,8 @@ export default (View, getData) => {
     };
 
     componentDidMount() {
-      getData()
+      this.props
+        .getData()
         .then((data) => this.setState({ data, loading: false }))
         .catch((err) => this.setState({ error: true, loading: false }));
     }

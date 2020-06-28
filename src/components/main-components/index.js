@@ -1,2 +1,4 @@
 export { PersonList, PlanetList, StarshipList } from './item-lists';
-export { PersonDetails, PlanetDetails, StarshipDetails } from './details';
+export { default as PersonDetails } from './person-details';
+export { default as PlanetDetails } from './planet-details';
+export { default as StarshipDetails } from './starship-details';
