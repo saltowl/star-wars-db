@@ -1,38 +1,35 @@
 import React from 'react';
-import SwapiService from '../../services/swapi-service';
-import RandomPlanet from './random-planet-view';
+import { PlanetDetails } from '../main-components';
+import './random-planet.css';
 
 export default class RandomPlanetContainer extends React.Component {
-  swapiService = new SwapiService();
+  static defaultProps = {
+    updateInterval: 10000,
+  };
 
   state = {
-    planet: {},
-    loading: true,
-    error: false,
+    id: null,
   };
 
   componentDidMount() {
-    this.timer = setInterval(this.updatePlanet(), 10000);
+    this.updatePlanet();
+    this.timer = setInterval(this.updatePlanet, this.props.updateInterval);
   }
 
   componentWillUnmount() {
     clearInterval(this.timer);
   }
 
-  onPlanetLoaded = (planet) => {
-    this.setState({ planet, loading: false });
-  };
-
-  onError = (error) => {
-    this.setState({ error: true, loading: false });
-  };
-
   updatePlanet = () => {
     const id = Math.floor(Math.random() * 25) + 1;
-    this.swapiService.getPlanet(id).then(this.onPlanetLoaded).catch(this.onError);
+    this.setState({ id });
   };
 
   render() {
-    return <RandomPlanet {...this.state} />;
+    return (
+      <article className="random-planet jumbotron rounded d-flex">
+        <PlanetDetails itemId={this.state.id} />
+      </article>
+    );
   }
 }
