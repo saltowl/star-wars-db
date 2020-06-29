@@ -4,9 +4,9 @@ import Record from '../record';
 import { withSwapiService } from '../hoc-helpers';
 
 const PersonDetails = (props) => (
-  <ItemDetails {...props}>
-    <Record field="gender" label="Gender" />
-    <Record field="eyeColor" label="Eye Color" />
+  <ItemDetails {...props} type="a person">
+    <Record field="gender" label="Gender" key={'person gender'} />
+    <Record field="eyeColor" label="Eye Color" key={'person eye color'} />
   </ItemDetails>
 );
 

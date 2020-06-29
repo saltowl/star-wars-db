@@ -6,7 +6,7 @@ import Spinner from '../spinner';
 import Item from './item-view';
 import ErrorBlock from '../error-block';
 
-function ItemDetails({ item, image, loading, error, children }) {
+function ItemDetails({ item, image, loading, error, children, type }) {
   const showItem = item && !loading && !error;
   const showInitialMessage = item === null && !loading && !error;
 
@@ -18,7 +18,7 @@ function ItemDetails({ item, image, loading, error, children }) {
           {children}
         </Item>
       )}
-      {showInitialMessage && <span>Select a person from a list</span>}
+      {showInitialMessage && <span>Select {type} from a list</span>}
       {error && <ErrorBlock />}
     </div>
   );

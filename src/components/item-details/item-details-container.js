@@ -10,10 +10,15 @@ export default class ItemDetailsContainer extends React.Component {
     error: false,
   };
 
+  static defaultProps = {
+    type: 'an item',
+  };
+
   static propTypes = {
     itemId: PropTypes.string,
     getData: PropTypes.func.isRequired,
     getImageUrl: PropTypes.func.isRequired,
+    type: PropTypes.string,
   };
 
   updateItem() {
