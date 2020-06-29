@@ -1,34 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Spinner from '../spinner';
 import ErrorBlock from '../error-block';
 
-export default (View) => {
-  return class extends React.Component {
-    state = {
-      data: null,
-      error: false,
-      loading: true,
-    };
+export default (View) => (props) => {
+  const [state, setState] = useState({ data: null, error: false, loading: true });
+  const { getData } = props;
 
-    componentDidMount() {
-      this.props
-        .getData()
-        .then((data) => this.setState({ data, loading: false }))
-        .catch((err) => this.setState({ error: true, loading: false }));
-    }
+  useEffect(() => {
+    getData()
+      .then((data) => setState((state) => ({ ...state, data, loading: false })))
+      .catch(() => setState((state) => ({ ...state, error: true, loading: false })));
+  }, [getData]);
 
-    render() {
-      const { loading, error, data } = this.state;
+  const { loading, error, data } = state;
 
-      if (loading) {
-        return <Spinner />;
-      }
+  if (loading) {
+    return <Spinner />;
+  }
 
-      if (error) {
-        return <ErrorBlock />;
-      }
+  if (error) {
+    return <ErrorBlock />;
+  }
 
-      return <View {...this.props} data={data} />;
-    }
-  };
+  return <View {...props} data={data} />;
 };

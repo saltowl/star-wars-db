@@ -1,16 +1,21 @@
-import React from 'react';
-import StarshipPage from './starship-page-view';
+import React, { useState } from 'react';
+import ErrorBoundary from '../../error-boundary';
+import Row from '../../row';
+import { StarshipList, StarshipDetails } from '../../main-components';
 
-export default class StarshipPageContainer extends React.Component {
-  state = {
-    selectedStarship: null,
+export default function StarshipPageContainer() {
+  const [selectedStarship, setStarship] = useState(null);
+
+  const onStarshipSelected = (id) => {
+    setStarship(id);
   };
 
-  onStarshipSelected = (id) => {
-    this.setState({ selectedStarship: id });
-  };
-
-  render() {
-    return <StarshipPage {...this.state} onStarshipSelected={this.onStarshipSelected} />;
-  }
+  return (
+    <ErrorBoundary>
+      <Row>
+        <StarshipList onItemSelected={onStarshipSelected} />
+        <StarshipDetails itemId={selectedStarship} />
+      </Row>
+    </ErrorBoundary>
+  );
 }

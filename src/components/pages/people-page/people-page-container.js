@@ -1,16 +1,21 @@
-import React from 'react';
-import PeoplePage from './people-page-view';
+import React, { useState } from 'react';
+import ErrorBoundary from '../../error-boundary';
+import Row from '../../row';
+import { PersonList, PersonDetails } from '../../main-components';
 
-export default class PeoplePageContainer extends React.Component {
-  state = {
-    selectedPerson: null,
+export default function PeoplePageContainer() {
+  const [selectedPerson, setPerson] = useState(null);
+
+  const onPersonSelected = (id) => {
+    setPerson(id);
   };
 
-  onPersonSelected = (id) => {
-    this.setState({ selectedPerson: id });
-  };
-
-  render() {
-    return <PeoplePage {...this.state} onPersonSelected={this.onPersonSelected} />;
-  }
+  return (
+    <ErrorBoundary>
+      <Row>
+        <PersonList onItemSelected={onPersonSelected} />
+        <PersonDetails itemId={selectedPerson} />
+      </Row>
+    </ErrorBoundary>
+  );
 }

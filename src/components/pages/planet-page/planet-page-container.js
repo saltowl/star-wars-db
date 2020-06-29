@@ -1,16 +1,21 @@
-import React from 'react';
-import PlanetPage from './planet-page-view';
+import React, { useState } from 'react';
+import ErrorBoundary from '../../error-boundary';
+import Row from '../../row';
+import { PlanetList, PlanetDetails } from '../../main-components';
 
-export default class PlanetPageContainer extends React.Component {
-  state = {
-    selectedPlanet: null,
+export default function PlanetPageContainer() {
+  const [selectedPlanet, setPlanet] = useState(null);
+
+  const onPlanetSelected = (id) => {
+    setPlanet(id);
   };
 
-  onPlanetSelected = (id) => {
-    this.setState({ selectedPlanet: id });
-  };
-
-  render() {
-    return <PlanetPage {...this.state} onPlanetSelected={this.onPlanetSelected} />;
-  }
+  return (
+    <ErrorBoundary>
+      <Row>
+        <PlanetList onItemSelected={onPlanetSelected} />
+        <PlanetDetails itemId={selectedPlanet} />
+      </Row>
+    </ErrorBoundary>
+  );
 }

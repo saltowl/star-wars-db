@@ -1,40 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { PlanetDetails } from '../main-components';
 import PropTypes from 'prop-types';
 import './random-planet.css';
 
-export default class RandomPlanetContainer extends React.Component {
-  static defaultProps = {
-    updateInterval: 10000,
-  };
+function RandomPlanet({ updateInterval }) {
+  const [id, setId] = useState(null);
 
-  static propTypes = {
-    updateInterval: PropTypes.number,
-  };
+  const updatePlanet = () => setId((Math.floor(Math.random() * 25) + 1).toString());
 
-  state = {
-    id: null,
-  };
+  useEffect(() => {
+    updatePlanet();
+    const timer = setInterval(updatePlanet, updateInterval);
+    return () => clearInterval(timer);
+  }, [updateInterval]);
 
-  componentDidMount() {
-    this.updatePlanet();
-    this.timer = setInterval(this.updatePlanet, this.props.updateInterval);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.timer);
-  }
-
-  updatePlanet = () => {
-    const id = Math.floor(Math.random() * 25) + 1;
-    this.setState({ id });
-  };
-
-  render() {
-    return (
-      <article className="random-planet jumbotron rounded d-flex">
-        <PlanetDetails itemId={this.state.id} />
-      </article>
-    );
-  }
+  return (
+    <article className="random-planet jumbotron rounded d-flex">
+      <PlanetDetails itemId={id} />
+    </article>
+  );
 }
+
+RandomPlanet.defaultProps = {
+  updateInterval: 10000,
+};
+
+RandomPlanet.propTypes = {
+  updateInterval: PropTypes.number,
+};
+
+export default RandomPlanet;
