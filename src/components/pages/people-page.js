@@ -8,8 +8,8 @@ function PeoplePage({ history, match }) {
   return (
     <ErrorBoundary>
       <Row>
-        <PersonList onItemSelected={(id) => history.push(id)} />
         <PersonDetails itemId={match.params.id || null} />
+        <PersonList onItemSelected={(id) => history.push(id)} />
       </Row>
     </ErrorBoundary>
   );

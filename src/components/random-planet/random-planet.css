@@ -1,17 +1,19 @@
 .random-planet {
   padding: 0;
   justify-content: center;
-  min-height: 200px;
+  height: 200px;
 }
 
 .random-planet .item-details {
+  flex-direction: row;
   background-color: transparent;
   border: none;
+  margin: 0;
 }
 
 .random-planet .item-details__image {
-  width: 150px;
-  height: 150px;
+  max-height: 150px;
+  width: auto;
   border-radius: 10px;
   margin-right: 1rem;
 }

@@ -6,7 +6,7 @@ function Item({ item, image, children }) {
 
   return (
     <React.Fragment>
-      <img className="item-details__image" src={image} alt={name} />
+      <img className="item-details__image img-fluid" src={image} alt={name} />
       <div className="card-body">
         <h4>{name}</h4>
         <ul className="list-group list-group-flush">

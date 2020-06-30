@@ -8,8 +8,8 @@ function PlanetPage({ match, history }) {
   return (
     <ErrorBoundary>
       <Row>
-        <PlanetList onItemSelected={(id) => history.push(id)} />
         <PlanetDetails itemId={match.params.id || null} />
+        <PlanetList onItemSelected={(id) => history.push(id)} />
       </Row>
     </ErrorBoundary>
   );

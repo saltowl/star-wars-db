@@ -1,4 +1,9 @@
+.item-list {
+  margin-bottom: 2rem;
+}
+
 .item-list li:hover {
   background-color: grey;
   color: white;
+  cursor: pointer;
 }

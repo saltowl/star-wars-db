@@ -62,13 +62,18 @@ export default class SwapiService {
   };
 
   _transformPerson = (person) => {
-    const { url, name, gender, birthYear, eyeColor } = toCamelCase(person);
+    const { url, name, gender, birthYear, eyeColor, homeworld } = toCamelCase(person);
+    const homeworldId = this._getId(homeworld);
+
     return {
       id: this._getId(url),
       name,
       gender,
       birthYear,
       eyeColor,
+      homeworld: {
+        link: `/planets/${homeworldId}`,
+      },
     };
   };
 
