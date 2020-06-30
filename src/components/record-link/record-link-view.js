@@ -18,4 +18,4 @@ RecordLink.propTypes = {
   field: PropTypes.string.isRequired,
 };
 
-export default RecordLink;
+export default React.memo(RecordLink);

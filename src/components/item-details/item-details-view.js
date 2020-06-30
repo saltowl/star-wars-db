@@ -32,4 +32,4 @@ ItemDetails.propTypes = {
   children: PropTypes.arrayOf(PropTypes.node),
 };
 
-export default ItemDetails;
+export default React.memo(ItemDetails);

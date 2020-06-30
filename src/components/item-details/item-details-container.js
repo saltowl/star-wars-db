@@ -46,4 +46,4 @@ ItemDetailsContainer.propTypes = {
   type: PropTypes.string,
 };
 
-export default ItemDetailsContainer;
+export default React.memo(ItemDetailsContainer);

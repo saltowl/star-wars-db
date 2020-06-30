@@ -25,4 +25,4 @@ Item.propTypes = {
   children: PropTypes.arrayOf(PropTypes.node).isRequired,
 };
 
-export default Item;
+export default React.memo(Item);

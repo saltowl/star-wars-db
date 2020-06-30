@@ -16,4 +16,4 @@ Record.propTypes = {
   field: PropTypes.string.isRequired,
 };
 
-export default Record;
+export default React.memo(Record);

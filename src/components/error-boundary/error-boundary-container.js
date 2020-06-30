@@ -1,7 +1,7 @@
 import React from 'react';
 import ErrorBlock from '../error-block';
 
-export default class ErrorBoundaryContainer extends React.Component {
+export default class ErrorBoundaryContainer extends React.PureComponent {
   state = {
     hasError: false,
   };

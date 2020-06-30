@@ -16,4 +16,4 @@ Row.propTypes = {
   children: PropTypes.arrayOf(PropTypes.node).isRequired,
 };
 
-export default Row;
+export default React.memo(Row);

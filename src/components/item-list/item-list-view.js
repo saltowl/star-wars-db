@@ -24,4 +24,4 @@ ItemList.propTypes = {
   children: PropTypes.func.isRequired,
 };
 
-export default ItemList;
+export default React.memo(ItemList);

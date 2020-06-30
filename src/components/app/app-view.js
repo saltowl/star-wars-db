@@ -43,4 +43,4 @@ function App({ location }) {
   );
 }
 
-export default withRouter(App);
+export default withRouter(React.memo(App));

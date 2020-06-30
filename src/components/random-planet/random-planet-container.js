@@ -29,4 +29,4 @@ RandomPlanet.propTypes = {
   updateInterval: PropTypes.number,
 };
 
-export default RandomPlanet;
+export default React.memo(RandomPlanet);

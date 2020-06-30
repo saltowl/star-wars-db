@@ -2,7 +2,7 @@ import React from 'react';
 import './app-header.css';
 import { Link } from 'react-router-dom';
 
-export default function AppHeader() {
+export default React.memo(function AppHeader() {
   return (
     <header className="header d-flex">
       <h1>
@@ -21,4 +21,4 @@ export default function AppHeader() {
       </ul>
     </header>
   );
-}
+});

@@ -23,4 +23,4 @@ ErrorBlock.propTypes = {
   message: PropTypes.string,
 };
 
-export default ErrorBlock;
+export default React.memo(ErrorBlock);
